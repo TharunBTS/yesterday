@@ -1,0 +1,33 @@
+create database propertyTax;
+use propertyTax;
+
+create table addProperty (
+propertId int primary key auto_increment,
+baseValueOfLand int check (baseValueOfLand > 0),
+buildUpArea int ,
+ageOfLandInYears int check (ageOfLandInYears > 0),
+locatedInCity varchar(1) check(locatedInCity in('Y','N','y','n')),
+propertyTaxes numeric(10,2) 
+);
+select * from addProperty;
+drop table addProperty;
+
+select sum(propertyTax) from addProperty;
+delete from addProperty;
+set sql_safe_updates=0;
+drop table addProperty;
+
+create table addVehicle(
+vehicleId int primary key auto_increment,
+vehicleRegistrationNumber varchar(4) not null ,
+vehicleBrand varchar(25) ,
+maximumVelocityOfVehicle int check ( maximumVelocityOfVehicle between 120 and 300) ,
+capacity int check (capacity >= 2 and capacity <= 50),
+vehicleType varchar(20) check(vehicleType in ("petrol","diesel","cng","lpg")),
+purchaseCost int check (purchaseCost >= 50000 and purchaseCost <= 1000000) ,
+vehicleTax numeric(10,2) not null
+
+
+);
+DROP TABLE addVehicle;
+select * from addVehicle;
